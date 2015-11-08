@@ -1,5 +1,6 @@
 var express = require('express')
 var fs = require('fs')
+var cool = require('cool-ascii-faces')
 
 var app = express()
 
@@ -10,6 +11,10 @@ app.get('/', function(request, response) {
   var buf = fs.readFileSync('index.html');
   var dataString = buf.toString();
   response.send(dataString);
+})
+
+app.get('/cool', function(request, response) {
+  response.send(cool());
 })
 
 app.listen(app.get('port'), function() {
