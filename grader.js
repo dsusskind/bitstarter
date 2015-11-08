@@ -65,7 +65,14 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url>', 'URL for index.html')
         .parse(process.argv);
+    // check if URL was passed
+      // if so, get index.html from program.url and pass into check function?
+      // else use program.file
+    console.log(program.checks);
+    console.log(program.file);
+    console.log(program.url);
     var checkJson = checkHtmlFile(program.file, program.checks);
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
